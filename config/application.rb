@@ -39,5 +39,7 @@ module Api
     end
 
     config.middleware.use Rack::Attack
+
+    ActiveModelSerializers.config.adapter = :json_api
   end
 end
