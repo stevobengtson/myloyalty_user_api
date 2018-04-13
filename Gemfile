@@ -36,6 +36,9 @@ gem 'jwt', '~> 2.1.0'
 # https://github.com/richhollis/swagger-docs
 gem 'swagger-docs', '~> 0.2.9'
 
+# Update loofah for security issue
+gem 'loofah' '~> 2.2.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
