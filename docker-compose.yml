@@ -23,4 +23,4 @@ services:
       - user_api_db
 
 volumes:
-  user_api_db_data:
+  user_api_db_data: null

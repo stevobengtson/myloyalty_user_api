@@ -5,11 +5,6 @@ module Api::V1
     before_action :authenticate_request!
     before_action :set_user, only: [:show, :update, :destroy]
 
-    def self.add_common_params(api)
-      api.param :form, "user[name]", :string, :required, "Name"
-      api.param :form, "user[email]", :string, :required, "Email"
-    end
-
     swagger_api :index do
       summary "Fetches all User items"
       notes "This lists all the active users"
@@ -24,14 +19,14 @@ module Api::V1
       response :requested_range_not_satisfiable
     end
 
-    swagger_api :create do |api|
+    swagger_api :create do
       summary "Create a new User item"
       notes "Create a new User item"
-      Api::V1::UsersController::add_common_params(api)
       response :unauthorized
       response :not_acceptable
       response :unprocessable_entity
     end
+
     # GET /users
     def index
       @users = User.all

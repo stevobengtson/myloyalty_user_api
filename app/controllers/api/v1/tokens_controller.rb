@@ -2,6 +2,19 @@ module Api::V1
   class TokensController < ApplicationController
     before_action :authenticate_request!, only: [:authorized]
 
+    swagger_controller :tokens, 'Tokens'
+
+    swagger_api :create do
+      summary 'Creates a new token on login'
+      notes 'JWT returned'
+      response :unatuhorized
+    end
+
+    swagger_api :authorized do
+      summary 'Checks if a user is authorized'
+      notes 'You must be authorized first (sending the JWT Token)'
+    end
+
     # POST /tokens
     def create
       user = User.find_by(email: user_params[:email].to_s.downcase)
